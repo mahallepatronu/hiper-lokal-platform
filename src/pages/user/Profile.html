@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiper Lokal Platform - Profil</title>
+    <link rel="stylesheet" href="../../assets/styles.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <img src="../../assets/images/logo.svg" alt="Hiper Lokal Logo">
+            </div>
+            <div class="nav-links">
+                <a href="../HomePage.html">Ana Sayfa</a>
+                <a href="#" class="active">Profil</a>
+                <a href="Settings.html">Ayarlar</a>
+                <button class="dark-mode-toggle">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <div class="profile-container animate-on-scroll">
+            <div class="profile-header">
+                <div class="profile-avatar">
+                    <img src="../../assets/images/default-avatar.svg" alt="Profil Fotoğrafı" id="profileImage">
+                    <button class="btn btn-secondary" id="changePhotoBtn">Fotoğraf Değiştir</button>
+                </div>
+                <div class="profile-info">
+                    <h1 id="userName">Kullanıcı Adı</h1>
+                    <p id="userEmail">kullanici@email.com</p>
+                </div>
+            </div>
+
+            <div class="profile-content">
+                <div class="profile-section">
+                    <h2>Kişisel Bilgiler</h2>
+                    <form id="profileForm" class="profile-form">
+                        <div class="form-group">
+                            <label for="firstName">Ad</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Soyad</label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefon</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Adres</label>
+                            <textarea id="address" name="address" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Bilgileri Güncelle</button>
+                    </form>
+                </div>
+
+                <div class="profile-section">
+                    <h2>Şifre Değiştir</h2>
+                    <form id="passwordForm" class="profile-form">
+                        <div class="form-group">
+                            <label for="currentPassword">Mevcut Şifre</label>
+                            <input type="password" id="currentPassword" name="currentPassword" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="newPassword">Yeni Şifre</label>
+                            <input type="password" id="newPassword" name="newPassword" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmPassword">Yeni Şifre Tekrar</label>
+                            <input type="password" id="confirmPassword" name="confirmPassword" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Şifreyi Değiştir</button>
+                    </form>
+                </div>
+
+                <div class="profile-section">
+                    <h2>Hesap İstatistikleri</h2>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <h3>Toplam Sipariş</h3>
+                            <p id="totalOrders">0</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Toplam Harcama</h3>
+                            <p id="totalSpending">0 TL</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Kampanya Katılımları</h3>
+                            <p id="campaignParticipations">0</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>İletişim</h4>
+                <p>Email: info@hiperlokal.com</p>
+                <p>Tel: +90 555 123 4567</p>
+            </div>
+            <div class="footer-section">
+                <h4>Sosyal Medya</h4>
+                <div class="social-links">
+                    <a href="#">Facebook</a>
+                    <a href="#">Twitter</a>
+                    <a href="#">Instagram</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Hiper Lokal Platform. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+
+    <script src="../../assets/scripts.js"></script>
+    <script type="module">
+        import { authService, userService } from '../../services/api.js';
+
+        // Oturum kontrolü
+        if (!authService.isAuthenticated()) {
+            window.location.href = '../LoginPage.html';
+        }
+
+        // Profil bilgilerini yükle
+        const loadProfile = async () => {
+            try {
+                const profile = await userService.getProfile();
+                document.getElementById('userName').textContent = `${profile.firstName} ${profile.lastName}`;
+                document.getElementById('userEmail').textContent = profile.email;
+                document.getElementById('firstName').value = profile.firstName;
+                document.getElementById('lastName').value = profile.lastName;
+                document.getElementById('phone').value = profile.phone || '';
+                document.getElementById('address').value = profile.address || '';
+            } catch (error) {
+                showError('Profil bilgileri yüklenirken bir hata oluştu.');
+            }
+        };
+
+        // Profil güncelleme
+        const profileForm = document.getElementById('profileForm');
+        profileForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const userData = {
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                phone: document.getElementById('phone').value,
+                address: document.getElementById('address').value
+            };
+
+            try {
+                loadingManager.show(profileForm);
+                await userService.updateProfile(userData);
+                showSuccess('Profil bilgileri başarıyla güncellendi.');
+                loadProfile();
+            } catch (error) {
+                showError(error.message || 'Profil güncellenirken bir hata oluştu.');
+            } finally {
+                loadingManager.hide(profileForm);
+            }
+        });
+
+        // Şifre değiştirme
+        const passwordForm = document.getElementById('passwordForm');
+        passwordForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const currentPassword = document.getElementById('currentPassword').value;
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (newPassword !== confirmPassword) {
+                showError('Yeni şifreler eşleşmiyor!');
+                return;
+            }
+
+            try {
+                loadingManager.show(passwordForm);
+                await userService.changePassword({
+                    currentPassword,
+                    newPassword
+                });
+                showSuccess('Şifreniz başarıyla güncellendi.');
+                passwordForm.reset();
+            } catch (error) {
+                showError(error.message || 'Şifre güncellenirken bir hata oluştu.');
+            } finally {
+                loadingManager.hide(passwordForm);
+            }
+        });
+
+        // Sayfa yüklendiğinde
+        document.addEventListener('DOMContentLoaded', () => {
+            loadProfile();
+        });
+    </script>
+</body>
+</html> 

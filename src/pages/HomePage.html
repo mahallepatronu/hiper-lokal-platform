@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahalle Patronu - Yerel İşletmeleri Keşfet</title>
+    <link rel="stylesheet" href="../assets/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="main-header">
+        <div class="nav-container">
+            <a href="/" class="logo">
+                <img src="../assets/images/logo.png" alt="Mahalle Patronu Logo">
+                <span class="logo-text">Mahalle Patronu</span>
+            </a>
+            <nav class="nav-links">
+                <a href="campaign/list.html">Kampanyalar</a>
+                <a href="business/list.html">İşletmeler</a>
+                <a href="user/profile.html">Profilim</a>
+                <a href="user/reports.html">Raporlarım</a>
+                <a href="user/settings.html">Ayarlar</a>
+            </nav>
+            <div class="auth-buttons">
+                <button id="darkModeToggle" class="btn-icon" aria-label="Dark Mode Toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <a href="LoginPage.html" class="btn btn-outline">Giriş Yap</a>
+                <a href="RegisterPage.html" class="btn btn-primary">Kayıt Ol</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1>Mahallenizin Patronu Olun</h1>
+                <p>Yerel işletmeleri keşfedin, kampanyalardan haberdar olun</p>
+                <div class="search-box">
+                    <input type="text" placeholder="Konum veya işletme ara...">
+                    <button class="btn btn-primary">
+                        <i class="fas fa-search"></i>
+                        <span>Ara</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="features-section">
+            <h2>Özellikler</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-store"></i>
+                    <h3>Yerel İşletmeler</h3>
+                    <p>Size en yakın işletmeleri keşfedin ve özel fırsatları yakalayın</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-tag"></i>
+                    <h3>Kampanyalar</h3>
+                    <p>En iyi fırsatları kaçırmayın, özel indirimleri takip edin</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Analitik</h3>
+                    <p>Detaylı raporlar ve istatistiklerle işletmenizi büyütün</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-bullhorn"></i>
+                    <h3>Pazarlama</h3>
+                    <p>Etkili pazarlama araçlarıyla müşterilerinize ulaşın</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="campaigns-section">
+            <h2>Öne Çıkan Kampanyalar</h2>
+            <div class="campaigns-grid">
+                <!-- Kampanya kartları dinamik olarak eklenecek -->
+            </div>
+        </section>
+
+        <section class="businesses-section">
+            <h2>Popüler İşletmeler</h2>
+            <div class="businesses-grid">
+                <!-- İşletme kartları dinamik olarak eklenecek -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Hakkımızda</h3>
+                <p>Mahalle Patronu, yerel işletmeleri ve müşterileri bir araya getiren yenilikçi bir platformdur.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Hızlı Bağlantılar</h3>
+                <ul>
+                    <li><a href="/pages/campaign">Kampanyalar</a></li>
+                    <li><a href="/pages/business">İşletmeler</a></li>
+                    <li><a href="/pages/user/profile">Profilim</a></li>
+                    <li><a href="/pages/user/reports">Raporlarım</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>İletişim</h3>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> info@hiperlokal.com</li>
+                    <li><i class="fas fa-phone"></i> +90 555 123 4567</li>
+                    <li><i class="fas fa-map-marker-alt"></i> İstanbul, Türkiye</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Sosyal Medya</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Mahalle Patronu. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+
+    <script src="../utils/main.js"></script>
+    <script>
+        // Dark Mode Toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+        const icon = darkModeToggle.querySelector('i');
+        
+        // Check for saved user preference, if any, on load of the website
+        const darkMode = localStorage.getItem('darkMode');
+        
+        // If the user previously enabled dark mode, apply it to the body
+        if (darkMode === 'enabled') {
+            body.classList.add('dark-mode');
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+        }
+        
+        // When someone clicks the button
+        darkModeToggle.addEventListener('click', () => {
+            // Toggle dark mode on body
+            body.classList.toggle('dark-mode');
+            
+            // Toggle icon
+            if (body.classList.contains('dark-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                localStorage.setItem('darkMode', null);
+            }
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiper Lokal Platform - Ayarlar</title>
+    <link rel="stylesheet" href="../../assets/styles.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <img src="../../assets/images/logo.svg" alt="Hiper Lokal Logo">
+            </div>
+            <div class="nav-links">
+                <a href="../HomePage.html">Ana Sayfa</a>
+                <a href="Profile.html">Profil</a>
+                <a href="#" class="active">Ayarlar</a>
+                <button class="dark-mode-toggle">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <div class="settings-container animate-on-scroll">
+            <h1>Hesap Ayarları</h1>
+            
+            <div class="settings-section">
+                <h2>Bildirim Tercihleri</h2>
+                <form id="notificationForm" class="settings-form">
+                    <div class="form-group">
+                        <label class="toggle-label">
+                            <input type="checkbox" name="emailNotifications" checked>
+                            <span class="toggle-text">E-posta Bildirimleri</span>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="toggle-label">
+                            <input type="checkbox" name="pushNotifications" checked>
+                            <span class="toggle-text">Push Bildirimleri</span>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="toggle-label">
+                            <input type="checkbox" name="campaignNotifications" checked>
+                            <span class="toggle-text">Kampanya Bildirimleri</span>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="toggle-label">
+                            <input type="checkbox" name="orderNotifications" checked>
+                            <span class="toggle-text">Sipariş Bildirimleri</span>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Bildirim Ayarlarını Kaydet</button>
+                </form>
+            </div>
+
+            <div class="settings-section">
+                <h2>Gizlilik Ayarları</h2>
+                <form id="privacyForm" class="settings-form">
+                    <div class="form-group">
+                        <label class="toggle-label">
+                            <input type="checkbox" name="profileVisibility" checked>
+                            <span class="toggle-text">Profil Görünürlüğü</span>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="toggle-label">
+                            <input type="checkbox" name="orderHistory" checked>
+                            <span class="toggle-text">Sipariş Geçmişi Görünürlüğü</span>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="toggle-label">
+                            <input type="checkbox" name="activityStatus" checked>
+                            <span class="toggle-text">Çevrimiçi Durumu</span>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Gizlilik Ayarlarını Kaydet</button>
+                </form>
+            </div>
+
+            <div class="settings-section">
+                <h2>Dil ve Bölge</h2>
+                <form id="languageForm" class="settings-form">
+                    <div class="form-group">
+                        <label for="language">Dil</label>
+                        <select id="language" name="language" class="form-control">
+                            <option value="tr">Türkçe</option>
+                            <option value="en">English</option>
+                            <option value="de">Deutsch</option>
+                            <option value="fr">Français</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="region">Bölge</label>
+                        <select id="region" name="region" class="form-control">
+                            <option value="istanbul">İstanbul</option>
+                            <option value="ankara">Ankara</option>
+                            <option value="izmir">İzmir</option>
+                            <option value="antalya">Antalya</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Dil ve Bölge Ayarlarını Kaydet</button>
+                </form>
+            </div>
+
+            <div class="settings-section">
+                <h2>Tema Tercihleri</h2>
+                <form id="themeForm" class="settings-form">
+                    <div class="form-group">
+                        <label class="toggle-label">
+                            <input type="checkbox" name="darkMode" id="darkModeToggle">
+                            <span class="toggle-text">Karanlık Mod</span>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="toggle-label">
+                            <input type="checkbox" name="systemTheme" id="systemThemeToggle" checked>
+                            <span class="toggle-text">Sistem Temasını Kullan</span>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Tema Ayarlarını Kaydet</button>
+                </form>
+            </div>
+
+            <div class="settings-section danger-zone">
+                <h2>Tehlikeli Bölge</h2>
+                <div class="danger-actions">
+                    <button class="btn btn-danger" id="deleteAccountBtn">Hesabı Sil</button>
+                    <button class="btn btn-warning" id="exportDataBtn">Verileri Dışa Aktar</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>İletişim</h4>
+                <p>Email: info@hiperlokal.com</p>
+                <p>Tel: +90 555 123 4567</p>
+            </div>
+            <div class="footer-section">
+                <h4>Sosyal Medya</h4>
+                <div class="social-links">
+                    <a href="#">Facebook</a>
+                    <a href="#">Twitter</a>
+                    <a href="#">Instagram</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Hiper Lokal Platform. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+
+    <script src="../../assets/scripts.js"></script>
+    <script type="module">
+        import { authService, userService } from '../../services/api.js';
+
+        // Oturum kontrolü
+        if (!authService.isAuthenticated()) {
+            window.location.href = '../LoginPage.html';
+        }
+
+        // Ayarları yükle
+        const loadSettings = async () => {
+            try {
+                const settings = await userService.getSettings();
+                
+                // Bildirim ayarları
+                document.querySelector('input[name="emailNotifications"]').checked = settings.notifications.email;
+                document.querySelector('input[name="pushNotifications"]').checked = settings.notifications.push;
+                document.querySelector('input[name="campaignNotifications"]').checked = settings.notifications.campaign;
+                document.querySelector('input[name="orderNotifications"]').checked = settings.notifications.order;
+
+                // Gizlilik ayarları
+                document.querySelector('input[name="profileVisibility"]').checked = settings.privacy.profile;
+                document.querySelector('input[name="orderHistory"]').checked = settings.privacy.orderHistory;
+                document.querySelector('input[name="activityStatus"]').checked = settings.privacy.activityStatus;
+
+                // Dil ve bölge
+                document.getElementById('language').value = settings.language;
+                document.getElementById('region').value = settings.region;
+
+                // Tema ayarları
+                document.getElementById('darkModeToggle').checked = settings.theme.darkMode;
+                document.getElementById('systemThemeToggle').checked = settings.theme.systemTheme;
+            } catch (error) {
+                showError('Ayarlar yüklenirken bir hata oluştu.');
+            }
+        };
+
+        // Bildirim ayarlarını kaydet
+        const notificationForm = document.getElementById('notificationForm');
+        notificationForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const notificationSettings = {
+                email: document.querySelector('input[name="emailNotifications"]').checked,
+                push: document.querySelector('input[name="pushNotifications"]').checked,
+                campaign: document.querySelector('input[name="campaignNotifications"]').checked,
+                order: document.querySelector('input[name="orderNotifications"]').checked
+            };
+
+            try {
+                loadingManager.show(notificationForm);
+                await userService.updateNotificationSettings(notificationSettings);
+                showSuccess('Bildirim ayarları başarıyla güncellendi.');
+            } catch (error) {
+                showError(error.message || 'Bildirim ayarları güncellenirken bir hata oluştu.');
+            } finally {
+                loadingManager.hide(notificationForm);
+            }
+        });
+
+        // Gizlilik ayarlarını kaydet
+        const privacyForm = document.getElementById('privacyForm');
+        privacyForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const privacySettings = {
+                profile: document.querySelector('input[name="profileVisibility"]').checked,
+                orderHistory: document.querySelector('input[name="orderHistory"]').checked,
+                activityStatus: document.querySelector('input[name="activityStatus"]').checked
+            };
+
+            try {
+                loadingManager.show(privacyForm);
+                await userService.updatePrivacySettings(privacySettings);
+                showSuccess('Gizlilik ayarları başarıyla güncellendi.');
+            } catch (error) {
+                showError(error.message || 'Gizlilik ayarları güncellenirken bir hata oluştu.');
+            } finally {
+                loadingManager.hide(privacyForm);
+            }
+        });
+
+        // Dil ve bölge ayarlarını kaydet
+        const languageForm = document.getElementById('languageForm');
+        languageForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const languageSettings = {
+                language: document.getElementById('language').value,
+                region: document.getElementById('region').value
+            };
+
+            try {
+                loadingManager.show(languageForm);
+                await userService.updateLanguageSettings(languageSettings);
+                showSuccess('Dil ve bölge ayarları başarıyla güncellendi.');
+            } catch (error) {
+                showError(error.message || 'Dil ve bölge ayarları güncellenirken bir hata oluştu.');
+            } finally {
+                loadingManager.hide(languageForm);
+            }
+        });
+
+        // Tema ayarlarını kaydet
+        const themeForm = document.getElementById('themeForm');
+        themeForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const themeSettings = {
+                darkMode: document.getElementById('darkModeToggle').checked,
+                systemTheme: document.getElementById('systemThemeToggle').checked
+            };
+
+            try {
+                loadingManager.show(themeForm);
+                await userService.updateThemeSettings(themeSettings);
+                showSuccess('Tema ayarları başarıyla güncellendi.');
+                
+                // Tema değişikliğini uygula
+                if (themeSettings.systemTheme) {
+                    document.body.classList.toggle('dark-mode', window.matchMedia('(prefers-color-scheme: dark)').matches);
+                } else {
+                    document.body.classList.toggle('dark-mode', themeSettings.darkMode);
+                }
+            } catch (error) {
+                showError(error.message || 'Tema ayarları güncellenirken bir hata oluştu.');
+            } finally {
+                loadingManager.hide(themeForm);
+            }
+        });
+
+        // Hesap silme
+        document.getElementById('deleteAccountBtn').addEventListener('click', async () => {
+            if (confirm('Hesabınızı silmek istediğinizden emin misiniz? Bu işlem geri alınamaz.')) {
+                try {
+                    await userService.deleteAccount();
+                    authService.logout();
+                    window.location.href = '../HomePage.html';
+                } catch (error) {
+                    showError(error.message || 'Hesap silinirken bir hata oluştu.');
+                }
+            }
+        });
+
+        // Veri dışa aktarma
+        document.getElementById('exportDataBtn').addEventListener('click', async () => {
+            try {
+                const data = await userService.exportData();
+                const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'hiper-lokal-veriler.json';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                showSuccess('Verileriniz başarıyla dışa aktarıldı.');
+            } catch (error) {
+                showError(error.message || 'Veriler dışa aktarılırken bir hata oluştu.');
+            }
+        });
+
+        // Sayfa yüklendiğinde
+        document.addEventListener('DOMContentLoaded', () => {
+            loadSettings();
+        });
+    </script>
+</body>
+</html> 
