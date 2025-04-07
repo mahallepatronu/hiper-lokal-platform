@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://mahallepatronu.github.io/hiper-lokal-platform/sitemap.xml 
